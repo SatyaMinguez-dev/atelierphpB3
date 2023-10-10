@@ -8,10 +8,10 @@ function addUser(PDO $pdo, string $first_name, string $last_name, string $email,
     */
     $query = $pdo->prepare("INSERT INTO users(first_name,last_name,email,password) VALUES (:first_name,:last_name,:email,:password)");
     //requete d'insertion et prepare() pour des questions de sécurité
-    $query -> bindValue(':first_name', $first_name, PDO::FETCH_ASSOC);
-    $query -> bindValue(':last_name', $last_name, PDO::FETCH_ASSOC);
-    $query -> bindValue(':email', $email, PDO::FETCH_ASSOC);
-    $query -> bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::FETCH_ASSOC);
+    $query -> bindValue(':first_name', $first_name, PDO::PARAM_STR);
+    $query -> bindValue(':last_name', $last_name, PDO::PARAM_STR);
+    $query -> bindValue(':email', $email, PDO::PARAM_STR);
+    $query -> bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
 
     $query->execute();
 

@@ -26,7 +26,7 @@ function getArticles(PDO $pdo, int $limit = null, int $page = null):array|bool
 function getTotalArticles(PDO $pdo):int|bool
 {
     /*
-        @todo récupérer le nombre total d'article (avec COUNT) OK
+        @todo récupérer le nombre total d'article (avec COUNT) c'est GOOD
     */
     $query = $pdo ->prepare("SELECT COUNT(*) as total FROM articles");
 
